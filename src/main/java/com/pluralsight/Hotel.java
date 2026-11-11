@@ -46,6 +46,9 @@ public class Hotel {
         return bookedBasicRooms;
     }
     public boolean bookRoom(int roomCount, boolean suite){
+        if(roomCount <= 0){
+            return false;
+        }
         if(suite){
             if (roomCount <= getAvailableSuites()){
                 bookedSuites += roomCount;
@@ -59,8 +62,6 @@ public class Hotel {
 
         return false;
     }
-
-
 
     public int getAvailableSuites(){
         return numberOfSuites - bookedSuites;

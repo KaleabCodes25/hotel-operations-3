@@ -1,8 +1,6 @@
 package com.pluralsight;
 
-import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 
 /**
  * Employee (Workbook 4a, Section 2-1 Creating Classes, Exercise 1)
@@ -88,13 +86,21 @@ public class Employee {
     }
     public void punchIn(){
         LocalTime now = LocalTime.now();
-        double beginTime = now.getHour() + now.getMinute() / 60.0;
+        int hour = now.getHour();
+        int min = now.getMinute();
+        double time = now.getHour() + now.getMinute() / 60.0;
+        beginTime = time;
+
 
     }
     public void punchOut(){
         LocalTime now = LocalTime.now();
-        double duration = now.getHour() + now.getMinute() / 60.0;
-        hoursWorked += duration - beginTime;
+        int hour = now.getHour();
+        int min = now.getMinute();
+
+        double time = hour + min / 60.0;
+        double duration = time - beginTime;
+        hoursWorked += duration;
         beginTime = 0;
     }
 
